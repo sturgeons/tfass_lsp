@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.rp.mappers.RPreportMapper">
+		<select id="findMaster" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+			SELECT t.qadno,  nvl(a.cross_first, 0) + nvl(b.repair_first, 0) total, 
+			            nvl(a.cross_first, 0) cross_first, nvl(b.repair_first, 0) repair_first
+            FROM ( SELECT qadno FROM wh.assy_to_rework WHERE qadno is not null GROUP BY qadno ) t LEFT JOIN  (
+                    SELECT qadno, count(qadno) cross_first
+                    FROM wh.assy_to_rework 
+                    WHERE virtual_col = '0'  
+			
+					<if test="BEGIN_DATE != null and '' != BEGIN_DATE">
+						   AND assy_time > to_date(#{BEGIN_DATE}, 'yyyy-mm-dd hh24:mi') 
+					</if>
+					
+					<if test="END_DATE != null and '' != END_DATE">
+						   AND to_date(#{END_DATE}, 'yyyy-mm-dd hh24:mi')  > assy_time
+					</if>
+                    GROUP BY qadno
+            ) a ON t.qadno = a.qadno  LEFT  JOIN (  
+                    SELECT qadno, count(qadno) repair_first
+                    FROM wh.assy_to_rework 
+                    WHERE virtual_col = '1'  
+			
+					<if test="BEGIN_DATE != null and '' != BEGIN_DATE">
+						   AND assy_time > to_date(#{BEGIN_DATE}, 'yyyy-mm-dd hh24:mi') 
+					</if>
+					
+					<if test="END_DATE != null and '' != END_DATE">
+						   AND to_date(#{END_DATE}, 'yyyy-mm-dd hh24:mi')  > assy_time
+					</if>
+                    GROUP BY qadno
+            ) b ON t.qadno = b.qadno
+			 ORDER BY qadno
+		</select>
+		
+		
+		<select id="findAssyEM" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+						    SELECT assy_em, 
+							       cross_first + repair_first + repair_ok part_count,
+							       cross_first, 
+							       repair_first,
+							       repair_ok
+							FROM (
+							  SELECT assy_em,
+							         max(decode(virtual_col, 0, part_count, 0)) cross_first,
+							         max(decode(virtual_col, 1, part_count, 0)) repair_first,
+							         nvl(a.repair_ok, 0) repair_ok
+							  FROM (
+							         SELECT assy_em, count(qadno) part_count, virtual_col
+							         FROM wh.assy_to_rework  
+							         WHERE 1 = 1
+			
+									<if test="BEGIN_DATE != null and '' != BEGIN_DATE">
+										   AND assy_time > to_date(#{BEGIN_DATE}, 'yyyy-mm-dd hh24:mi') 
+									</if>
+									
+									<if test="END_DATE != null and '' != END_DATE">
+										   AND to_date(#{END_DATE}, 'yyyy-mm-dd hh24:mi')  > assy_time
+									</if>
+							         GROUP BY assy_em, virtual_col
+							  ) t LEFT JOIN (
+							         SELECT rework_em, count(qadno) repair_ok
+							         FROM wh.assy_to_rework  
+							         WHERE rework_state = 'OK'
+			
+									<if test="BEGIN_DATE != null and '' != BEGIN_DATE">
+										   AND rework_time > to_date(#{BEGIN_DATE}, 'yyyy-mm-dd hh24:mi') 
+									</if>
+									
+									<if test="END_DATE != null and '' != END_DATE">
+										   AND to_date(#{END_DATE}, 'yyyy-mm-dd hh24:mi')  > rework_time
+									</if>
+							         GROUP BY rework_em
+							  ) a ON t.assy_em = a.rework_em
+							  GROUP BY assy_em, repair_ok
+							)
+							ORDER BY assy_em
+		</select>
+		
+		
+		<select id="findAssyState" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+						SELECT qadno, assy_state, count(qadno) part_count
+						FROM wh.assy_to_rework  
+						WHERE virtual_col = '1' 
+						
+						<if test="BEGIN_DATE != null and '' != BEGIN_DATE">
+							   AND assy_time > to_date(#{BEGIN_DATE}, 'yyyy-mm-dd hh24:mi') 
+						</if>
+						
+						<if test="END_DATE != null and '' != END_DATE">
+							   AND to_date(#{END_DATE}, 'yyyy-mm-dd hh24:mi')  > assy_time
+						</if>
+						GROUP BY qadno, assy_state
+						ORDER BY assy_state
+		</select>
+		
+		
+		<select id="findTeamno" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+						SELECT qadno, teamno, count(qadno) part_count
+						FROM wh.assy_to_rework  
+						WHERE virtual_col = '1' 
+						
+						<if test="BEGIN_DATE != null and '' != BEGIN_DATE">
+							   AND assy_time > to_date(#{BEGIN_DATE}, 'yyyy-mm-dd hh24:mi') 
+						</if>
+						
+						<if test="END_DATE != null and '' != END_DATE">
+							   AND to_date(#{END_DATE}, 'yyyy-mm-dd hh24:mi')  > assy_time
+						</if>
+						GROUP BY qadno, teamno
+						ORDER BY teamno
+		</select>
+		
+		<select id="findAssyStateDesc" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+						SELECT assy_state
+						FROM wh.assy_to_rework  
+						WHERE virtual_col = '1' 
+						
+						<if test="BEGIN_DATE != null and '' != BEGIN_DATE">
+							   AND assy_time > to_date(#{BEGIN_DATE}, 'yyyy-mm-dd hh24:mi') 
+						</if>
+						
+						<if test="END_DATE != null and '' != END_DATE">
+							   AND to_date(#{END_DATE}, 'yyyy-mm-dd hh24:mi')  > assy_time
+						</if>
+						GROUP BY assy_state
+						ORDER BY assy_state
+		</select>
+		
+		<select id="findTeamnoDesc" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+						SELECT teamno
+						FROM wh.assy_to_rework  
+						WHERE virtual_col = '1' 
+						
+						<if test="BEGIN_DATE != null and '' != BEGIN_DATE">
+							   AND assy_time > to_date(#{BEGIN_DATE}, 'yyyy-mm-dd hh24:mi') 
+						</if>
+						
+						<if test="END_DATE != null and '' != END_DATE">
+							   AND to_date(#{END_DATE}, 'yyyy-mm-dd hh24:mi')  > assy_time
+						</if>
+						GROUP BY teamno
+						ORDER BY teamno
+		</select>
+</mapper>

@@ -1,0 +1,9 @@
+Ext.define('LDPlatformModule.model.Model', {
+	extend : 'Ext.data.Model',
+	fields : [ 'ID', 'LINE', 'OP', 'QADNO', 'CONTENT', 'CHECK_TYPE',
+			'CHECK_METHOD', '', 'CHECK_FREQUENCY', 'CHECK_UNIT', 'CHECKING_NO',
+			'TOLERANCE_LIMIT_LOWER', 'TOLERANCE_LIMIT_ON', 'MEASUREMENT_UNIT',
+			'VERSION_NO', 'STATUS', 'UPDATE_INFO', "UPDATED", "TYPE_NAME", 
+			"UNIT_NAME", "DATA_TYPE", 'LOWER_SIGN', "UPPER_SIGN",
+			"EM_NAME", "EM_NO", "ACTIVE"]
+});

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.st.mappers.STprintdataMapper">
+		<select id="find" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+			SELECT record_no, content, to_char(print_date, 'yyyy-mm-dd hh24:mi:ss') print_date
+			FROM md_print_data 
+			WHERE 1 = 1 
+			
+			<if test="RECORD_NO != null and '' != RECORD_NO">
+				   AND regexp_like(record_no, #{RECORD_NO})
+			</if>
+			
+			<if test="PART_NO != null and '' != PART_NO">
+				   AND regexp_like(content, #{PART_NO})
+			</if>
+			
+			ORDER BY record_no
+		</select>
+</mapper>

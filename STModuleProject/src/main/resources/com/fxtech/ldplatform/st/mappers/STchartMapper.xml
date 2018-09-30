@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.st.mappers.STchartMapper">
+		<select id="find" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+				select nvl(qadno, ' ') partno, total, a.column_value as name
+				from table(f_acc_cal_schedule()) a left join ( 
+				       select qadno,  count(ctime) total, to_char(ctime, 'HH24') as name
+				       from V_ACC_SACTUAL t 
+				       where line = #{LINE} and op = #{OP}
+				       group by qadno, to_char(ctime, 'HH24')
+				) b on a.column_value = b.name
+				order by a.column_value
+		</select>
+</mapper>

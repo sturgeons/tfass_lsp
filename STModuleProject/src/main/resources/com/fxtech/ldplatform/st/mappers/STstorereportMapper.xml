@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.st.mappers.STstorereportMapper">
+		<select id="find" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+				SELECT qadno, sum(part_count)  part_count
+				<choose>
+					<when test="CATE == '发泡入库数量汇总'">
+							FROM wh.wh_fapao_in_record
+					</when>
+					<when test="CATE == '发泡出库数量汇总'">
+							FROM wh.wh_fapao_out_record
+					</when>
+					<when test="CATE == '缝制出库数量汇总'">
+							FROM wh.fengpi_in_record
+					</when>
+					<when test="CATE == '裁片入库数量汇总'">
+							FROM cut.wh_slice_in_record
+					</when>
+					<when test="CATE == '裁片出库数量汇总'">
+							FROM cut.wh_slice_out_record
+					</when>
+					<when test="CATE == '气袋入库数量汇总'">
+							FROM wh_in_record
+					</when>
+					<when test="CATE == '气袋出库数量汇总'">
+							FROM wh_out_record
+					</when>
+				</choose>
+				WHERE 1 = 1 
+				
+				<if test="BEGIN_DATE != null and '' != BEGIN_DATE">
+					   AND created > to_date(#{BEGIN_DATE}, 'yyyy-mm-dd hh24:mi') 
+				</if>
+				
+				<if test="END_DATE != null and '' != END_DATE">
+					   AND to_date(#{END_DATE}, 'yyyy-mm-dd hh24:mi')  > created
+				</if>
+				GROUP BY qadno
+				ORDER BY qadno
+		</select>
+</mapper>

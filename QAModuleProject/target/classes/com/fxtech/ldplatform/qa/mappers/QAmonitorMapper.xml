@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.qa.mappers.QAmonitorMapper">
+		<select id="find" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+		 		SELECT * 
+		 		FROM TABLE(f_quality_check_data)
+		 		WHERE EXISTS (
+			            SELECT em_id
+			            FROM re_quality_employee
+			            WHERE em_id = #{EM_ID} AND em_line = line
+			     ) AND active = '1'
+			    <if test="DATE != null and '' != DATE">
+			            AND created = to_date(#{DATE}, 'yyyy-mm-dd')
+			    </if>
+			     <if test="QADNO != null and '' != QADNO">
+		                AND qadno = #{QADNO}
+			    </if>
+			     <if test="LINE != null and '' != LINE">
+		 				AND  line = #{LINE}
+			    </if>
+				ORDER BY created, shift, line, op, qadno, content
+		</select>
+</mapper>

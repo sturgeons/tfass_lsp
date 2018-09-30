@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.md.mappers.MDbomdataMapper">
+		<select id="find" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+				SELECT a.*, b.qadno, c.partno, c.remark
+				FROM md_partdata a   
+				            inner join md_qad b on a.qad_id = b.sysid
+							inner join md_part c on a.part_id = c.sysid
+				WHERE 
+				<choose>
+					<when test="LINE != null and '' != LINE">
+							line = #{LINE}
+					</when>
+					<otherwise>
+						    line is not null
+					</otherwise>
+				</choose>
+				ORDER BY LINE, OP, QAD_ID, PART_ID
+		</select>
+</mapper>

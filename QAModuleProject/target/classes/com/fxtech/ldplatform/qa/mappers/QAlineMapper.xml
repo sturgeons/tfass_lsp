@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.qa.mappers.QAlineMapper">
+		<select id="find" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+			     SELECT line 
+			     FROM v_quality_line
+			     WHERE exists(
+			            select em_id
+			            from re_quality_employee
+			            where em_id = #{EM_ID} and em_line = line
+			     ) 
+			     GROUP BY line
+		</select>
+</mapper>

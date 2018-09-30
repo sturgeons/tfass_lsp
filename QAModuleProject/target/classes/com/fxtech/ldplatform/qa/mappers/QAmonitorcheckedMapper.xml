@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.qa.mappers.QAmonitorcheckedMapper">
+		<select id="find" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+				SELECT t.*, b.result_val, b.sysid, nvl(b.status, 0) status, b.created, b.shift 
+				FROM v_quality_basic t INNER JOIN ( SELECT * FROM qa_result WHERE status = 1 ) b ON t.id = b.quality_id
+		 		WHERE EXISTS (
+			            SELECT em_id
+			            FROM re_quality_employee
+			            WHERE em_id = #{EM_ID} AND em_line = line
+			     )
+			    <if test="DATE != null and '' != DATE">
+			            AND created = to_date(#{DATE}, 'yyyy-mm-dd')
+			    </if>
+			     <if test="QADNO != null and '' != QADNO">
+		                AND qadno = #{QADNO}
+			    </if>
+			     <if test="LINE != null and '' != LINE">
+		 				AND  line = #{LINE}
+			    </if>
+				ORDER BY created, shift, line, op, qadno, content
+		</select>
+</mapper>

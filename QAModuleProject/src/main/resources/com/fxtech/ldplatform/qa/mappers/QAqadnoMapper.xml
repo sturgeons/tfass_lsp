@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.qa.mappers.QAqadnoMapper">
+		<select id="find" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+				SELECT qadno 
+				FROM md_quality_item
+				WHERE
+			    <choose>
+					<when test="LINE != null and '' != LINE">
+			    			line = #{LINE}
+			        </when>
+			        <otherwise>
+			    			line = 'not exists'
+			        </otherwise>
+				</choose>
+				GROUP BY qadno
+				ORDER BY qadno
+		</select>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.st.mappers.STpartactualMapper">
+		<select id="find" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+				<![CDATA[
+						select count(ctime) as PARTACTUAL 
+						from V_ACC_TGDATA
+						where exists (
+						      select shift_begin
+						      from t_acc_shift
+						      where shift_begin <= ctime  and  shift_end >= ctime
+						) and partno in ( 
+						     select a.value 
+						     from V_ACC_PARTTYPE a inner join ( 
+						             select max(partno) partno, max(ctime) 
+						             from V_ACC_TGDATA
+						             where line = #{LINE} and op = #{OP}
+						     ) b on a.partno = b.partno
+						)
+				]]>
+		</select>
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.qa.mappers.QAdataMapper">
+		<select id="find" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+				SELECT *
+				FROM (
+					SELECT id, line, op, qadno, content, a.type_name check_type, check_method, check_frequency,
+			               checking_no, '(' || tolerance_limit_lower || '-' || tolerance_limit_on || ')' || b.unit_name val,
+			               c.result_val, c.sysid, data_type, nvl(c.status, 0) status, t.lower_sign, t.upper_sign,
+			               tolerance_limit_lower, tolerance_limit_on, b.unit_name, active
+					FROM (
+					     SELECT * 
+					     FROM (
+					          SELECT a.sysid id, a.qadno, b.op, b.line, b.content, b.check_type, b.check_method, b.check_frequency,
+					                  b.check_unit, b.checking_no, b.tolerance_limit_lower, b.tolerance_limit_on, b.version_no,
+					                  b.update_info, b.updated, b.data_type, b.measurement_unit, b.lower_sign, b.upper_sign,
+					                  b.active
+					           FROM (
+					                SELECT * 
+					                FROM md_quality_item 
+					                WHERE qadno = #{QADNO}
+					           ) a INNER JOIN md_quality b ON a.parent_id = b.id
+					     ) a
+					     WHERE  line = #{LINE} AND  op = #{OP}
+					    <if test="CHECK_TYPE != null and '' != CHECK_TYPE">
+					        AND  check_type = #{CHECK_TYPE}
+					    </if>
+					  ) t 
+					   LEFT JOIN md_checktype a ON t.check_type = a.sysid
+					   LEFT JOIN md_measurement_unit b ON t.measurement_unit = b.sysid
+					   LEFT JOIN (
+					     SELECT *
+					     FROM qa_result
+					     WHERE 1 = 1
+						  <if test="DATE != null and '' != DATE">
+						      AND  created = to_date(#{DATE}, 'yyyy-mm-dd')
+						  </if>
+						  <if test="SHIFT != null and '' != SHIFT">
+						      AND  shift = #{SHIFT}
+						  </if>
+					  ) c ON t.id = c.quality_id
+				)
+				WHERE status = 0 AND active = '1'
+			    <if test="SHIFT == null or '' == SHIFT">
+			        AND  1 > 2
+			    </if>
+				ORDER BY line, op, content
+		</select>
+</mapper>

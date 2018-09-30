@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fxtech.ldplatform.md.mappers.MDqualityMapper">
+		<select id="find" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+				SELECT *
+				FROM v_qa_quality_data
+			    WHERE 1 = 1
+							<if test="LINE != null and '' != LINE">
+									AND  line = #{LINE}
+							</if>
+							<if test="OP != null and '' != OP">
+									AND  op = #{OP}
+							</if>
+							<if test="CHECK_TYPE != null and '' != CHECK_TYPE">
+									AND  check_type = #{CHECK_TYPE}
+							</if>
+				ORDER BY check_type, line, op, content
+		</select>
+		
+		<select id="findById" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+				  SELECT  count(t.id) amount 
+			      FROM  (SELECT id FROM md_quality WHERE id = #{ID}) t 
+			                  LEFT JOIN md_quality_item b ON b.parent_id = t.id
+			      WHERE exists (
+			           SELECT sysid  FROM qa_result c WHERE c.quality_id = b.sysid
+			      )
+		</select>
+</mapper>
