@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.fxtech</groupId>
+	<artifactId>LDPlatform</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>LDPlatform</name>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.3.0.RELEASE</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0.2</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>StaticResource</module>
+		<module>CoreProject</module>
+		<module>ReportProject</module>
+		<module>ExcelProject</module>
+		<module>ApiProject</module>
+		<module>OSModuleProject</module>
+		<module>UtilsProject</module>
+		<module>MDModuleProject</module>
+		<module>STModuleProject</module>
+		<module>QAModuleProject</module>
+		<module>WHModuleProject</module>
+		<module>FPModuleProject</module>
+		<module>ZPModuleProject</module>
+		<module>RPModuleProject</module>
+		<module>SLModuleProject</module>
+		<module>JRModuleProject</module>
+		<module>LSModuleProject</module>
+	</modules>
+</project>

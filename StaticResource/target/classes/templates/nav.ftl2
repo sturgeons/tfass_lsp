@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+	<head>
+	    <!-- Http Header Infomation -->
+	    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	    <meta http-equiv="Content-Language" content="zh-cn" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="Expires" content="0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache" content="no-cache">
+	    <meta name="author" content="fxstudio.com.cn" />
+	    <meta name="description" content="fx-tech.cn" />
+	    <meta name="keywords" content="fx-tech.cn,Management,FXStudio"/>
+	    <meta name="Copyright" content="Copyright fx-tech.cn All Rights Reserved."/>
+	    <title>fx-tech.cn</title>
+
+	    <!-- WebPage Style Desc -->
+	    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+	    <link rel="stylesheet" href="/css/nav.min.css" />
+	</head>
+	<body>
+			<div class="container-fluid">
+				<div class="page-header">
+			  		<h1>TFASS 出入库管理系统 <small>功能面板</small></h1>
+				</div>
+			  	<div class="row">
+			  		<div class="col-md-4">
+			  				<div class="panel panel-primary">
+			  						<div class="panel-heading">
+											<h1>气袋总成看板</h1>
+			  						</div>
+			  						<div class="panel-body">
+			  								<p>气袋总成出入库管理。</p>
+			  						</div>
+			  						<div class="panel-footer">
+			  								<a href="/storage" class="btn btn-large btn-success btn-block">进入应用</a>
+			  						</div>
+			  				</div>
+			  		</div>
+			  		
+			  		<div class="col-md-4">
+			  				<div class="panel panel-primary">
+			  						<div class="panel-heading">
+											<h1>裁片总成看板</h1>
+			  						</div>
+			  						<div class="panel-body">
+			  								<p>裁片总成出入库管理。</p>
+			  						</div>
+			  						<div class="panel-footer">
+			  								<a href="/slice" class="btn btn-large btn-success btn-block">进入应用</a>
+			  						</div>
+			  				</div>
+			  		</div>
+			  		
+			  		<div class="col-md-4">
+			  				<div class="panel panel-primary">
+			  						<div class="panel-heading">
+											<h1>发泡总成看板</h1>
+			  						</div>
+			  						<div class="panel-body">
+			  								<p>发泡总成出入库管理。</p>
+			  						</div>
+			  						<div class="panel-footer">
+			  								<a href="/fapao" class="btn btn-large btn-success btn-block">进入应用</a>
+			  						</div>
+			  				</div>
+			  		</div>
+			  		
+			  		<div class="col-md-4">
+			  				<div class="panel panel-primary">
+			  						<div class="panel-heading">
+											<h1>缝皮总成看板</h1>
+			  						</div>
+			  						<div class="panel-body">
+			  								<p>缝皮总成出入库管理。</p>
+			  						</div>
+			  						<div class="panel-footer">
+			  								<a href="/fengpi" class="btn btn-large btn-success btn-block">进入应用</a>
+			  						</div>
+			  				</div>
+			  		</div>
+			  		
+			  			<div class="col-md-4">
+			  				<div class="panel panel-primary">
+			  						<div class="panel-heading">
+											<h1>装配总成看板</h1>
+			  						</div>
+			  						<div class="panel-body">
+			  								<p>装配总成出入库管理。</p>
+			  						</div>
+			  						<div class="panel-footer">
+			  								<a href="/zhuangpei" class="btn btn-large btn-success btn-block">进入应用</a>
+			  						</div>
+			  				</div>
+			  		</div>
+			  		
+			  		
+		  			<div class="col-md-4">
+			  				<div class="panel panel-primary">
+			  						<div class="panel-heading">
+											<h1>返修总成看板</h1>
+			  						</div>
+			  						<div class="panel-body">
+			  								<p>返修总成出入库管理。</p>
+			  						</div>
+			  						<div class="panel-footer">
+			  								<a href="/repair" class="btn btn-large btn-success btn-block">进入应用</a>
+			  						</div>
+			  				</div>
+			  		</div>
+			  		
+			  		
+			  			<div class="col-md-4">
+			  				<div class="panel panel-primary">
+			  						<div class="panel-heading">
+											<h1>加热看板</h1>
+			  						</div>
+			  						<div class="panel-body">
+			  								<p>加热看板。</p>
+			  						</div>
+			  						<div class="panel-footer">
+			  								<a href="/jiare" class="btn btn-large btn-success btn-block">进入应用</a>
+			  						</div>
+			  				</div>
+			  		</div>
+			  		
+			  		
+		  			<div class="col-md-4">
+			  				<div class="panel panel-primary">
+			  						<div class="panel-heading">
+											<h1>晾晒看板</h1>
+			  						</div>
+			  						<div class="panel-body">
+			  								<p>晾晒看板。</p>
+			  						</div>
+			  						<div class="panel-footer">
+			  								<a href="/liangshai" class="btn btn-large btn-success btn-block">进入应用</a>
+			  						</div>
+			  				</div>
+			  		</div>
+			  		
+			  		<div class="col-md-4">
+			  				<div class="panel panel-primary">
+			  						<div class="panel-heading">
+											<h1>库存管理看板(简易)</h1>
+			  						</div>
+			  						<div class="panel-body">
+			  								<p>库存管理看板。</p>
+			  						</div>
+			  						<div class="panel-footer">
+			  								<a href="/report" class="btn btn-large btn-success btn-block">进入应用</a>
+			  						</div>
+			  				</div>
+			  		</div>
+			  		
+			  		<div class="col-md-4">
+			  				<div class="panel panel-primary">
+			  						<div class="panel-heading">
+											<h1>库存管理看板(完整)</h1>
+			  						</div>
+			  						<div class="panel-body">
+			  								<p>库存管理看板。</p>
+			  						</div>
+			  						<div class="panel-footer">
+			  								<a href="/stWhreport" class="btn btn-large btn-success btn-block">进入应用</a>
+			  						</div>
+			  				</div>
+			  		</div>
+			  		
+			  		<div class="col-md-4">
+			  				<div class="panel panel-info">
+			  						<div class="panel-heading">
+											<h1>管理系统</h1>
+			  						</div>
+			  						<div class="panel-body">
+			  								<p>系统的权限、基础数据管理</p>
+			  						</div>
+			  						<div class="panel-footer">
+			  								<a href="/console" class="btn btn-large btn-success btn-block">进入应用</a>
+			  						</div>
+			  				</div>
+			  		</div>
+			  	</div>
+			</div>
+	</body>
+</html>

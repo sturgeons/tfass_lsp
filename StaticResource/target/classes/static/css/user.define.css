@@ -1,0 +1,23 @@
+body{background-color:#000;color:white;overflow: hidden;}
+.btn-danger {width: 100%;padding:12px 6px;text-align:right;background: #d9534f URL('../images/uncheck.png') no-repeat 3px center;}
+.btn-success {width: 100%;padding:12px 6px;background: #449d44 URL('../images/check.png') no-repeat 3px center;}
+.v_space{margin: 10px;}
+.separetor{width:100%;border:solid 1px lightGray;margin:15px 0;}
+
+.fx-label{font-size:16pt;font-weight:bolder;background-color:RGB(36,96,138);padding:10px;margin:0 -15px 0 0;border-radius: 4px;}
+.fx-large-label{font-size:18pt;padding:10px;font-weight:bolder;background-color:RGB(36,96,138);margin:0 -10px 0 0;border-radius:4px;}
+
+.fx-label-success{font-weight:bold;background-color:RGB(57,149,222);border-radius: 4px;margin:0px -10px 0 8px;}
+.fx-label-detail{font-weight:bold;background-color:RGB(0,188,88);border-radius: 4px;margin:8px -10px 0 8px;}
+.fx-label-success .form-control, .fx-label-detail .form-control {height:40px;font-weight:bolder;}
+
+.fx-input-readonly, .fx-select-box{height:45px;margin: 18px 0;font-size:14pt;}
+.fx-tables {padding:0 30px 0 1px;}
+.fx-tables .col-md-1 {border: solid 1px lightBlue;font-size:6pt;height:40px;padding:0;margin:0;}
+
+.fx-columns{padding:1px;}
+.fx-columns div {background-color:RGB(36,96,138);}
+.fx-columns .text-center {height:60px;font-size:16pt;font-weight:bolder;}
+.fx-content {position:relative;top:3px;}
+
+.btn-primary {width:100%;position:absolute;top:300px;left:0px;}

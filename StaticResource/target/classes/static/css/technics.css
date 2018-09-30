@@ -1,0 +1,44 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+div.login-back{width:100%;height:100%;}
+div.login-banner {
+    position: absolute;
+    height: 90px;
+    width: 620px;
+    top: 58%;
+    left: 50%;
+    margin-top: -220px;
+    margin-left: -300px;
+}
+
+div.login-banner{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+
+div.corpation{
+    position: relative;
+    bottom: 50%;
+    margin-top:110px;
+    color: lightGray;
+    font-weight: bolder;
+	text-align:center;
+}
+
+.x-window-header-text-default {
+	font-weight: bolder;
+	font-size:12pt;
+	font-style: italic;
+}
+#em_no .x-form-item-input-row td {
+	height: 55px;
+}
+#em_no .x-form-item-input-row td input{
+    height: 55px;
+    font-size:18pt;
+}
+
