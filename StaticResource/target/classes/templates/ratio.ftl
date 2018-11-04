@@ -11,7 +11,7 @@
 	    <meta name="description" content="fx-tech.cn" />
 	    <meta name="keywords" content="fx-tech.cn,Management,FXStudio"/>
 	    <meta name="Copyright" content="Copyright fx-tech.cn All Rights Reserved."/>
-	    <title>LDPlatform</title>
+	    <title>LDPlatform-ratio</title>
 
 	    <link href="css/ratio.min.css" rel="stylesheet"></head>
   	<body>

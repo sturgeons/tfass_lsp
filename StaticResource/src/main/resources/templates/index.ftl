@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 	<head>
-	    <!-- Http Header Infomation -->
+	    <!-- Http Header Infomation are you ok? -->
 	    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	    <meta http-equiv="Content-Language" content="zh-cn" />
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
@@ -11,7 +11,7 @@
 	    <meta name="description" content="fx-tech.cn" />
 	    <meta name="keywords" content="fx-tech.cn,Management,FXStudio"/>
 	    <meta name="Copyright" content="Copyright fx-tech.cn All Rights Reserved."/>
-	    <title>fx-tech.cn</title>
+	    <title>tfass</title>
 
 	    <!-- WebPage Style Desc -->
 	    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -26,7 +26,7 @@
 			</div>
             <img src="images/login-background.jpg" width="100%" height="100%"/>
 	    </div>
-	    <div class="corpation">@2017 ldplatform</div>
+	    <div class="corpation">@201888 ldplatform</div>
 	
 	    <!-- Load Javascript lib -->
 	    <script src="/javascript/libs/extjs/ext-all.js"></script>

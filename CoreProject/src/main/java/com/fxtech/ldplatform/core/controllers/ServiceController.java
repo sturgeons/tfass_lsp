@@ -56,7 +56,7 @@ public class ServiceController {
 		}
 		Object obj = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext()).getBean(service);
 
-		return obj.getClass().getMethod(method, Map.class).invoke(obj, params);
+ 		return obj.getClass().getMethod(method, Map.class).invoke(obj, params);
 	}
 
 	/**

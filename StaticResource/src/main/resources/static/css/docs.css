@@ -59,21 +59,23 @@ a.logout:hover {
 
 .t_bar {
     float: right;
-    margin: 0px 5px 0px 0px;
+    margin: 5px 5px 0px 0px;
     background-image: url(../images/user.png);
     background-repeat: no-repeat;
     background-position: left center;
-    height: 64px;
-    width: 64px;
+    background-size: cover;
+    height: 40px;
+    width: 40px;
 }
 .logout {
     float: right;
-    margin: 4px 15px 0px 0px;
+    margin: 7px 15px 0px 0px;
     background-image: url(../images/logout.png);
     background-repeat: no-repeat;
+    background-size: cover;
     background-position: left center;
-    height: 64px;
-    width: 64px;
+    height: 40px;
+    width: 40px;
 }
 
 .tabs {

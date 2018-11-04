@@ -20,26 +20,30 @@
 	</properties>
 
 	<dependencies>
+		<!--apache java bean 操作-->
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 		</dependency>
+		<!--单元测试 框架-->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<!--spring-context 框架-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!--日志框架-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!--jpa框架 对象关系映射-->
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>

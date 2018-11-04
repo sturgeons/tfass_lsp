@@ -11,7 +11,7 @@
 	    <meta name="description" content="fx-tech.cn" />
 	    <meta name="keywords" content="fx-tech.cn,Management,FXStudio"/>
 	    <meta name="Copyright" content="Copyright fx-tech.cn All Rights Reserved."/>
-	    <title>fx-tech.cn</title>
+	    <title>tfass shisbi kan</title>
 
 	    <!-- WebPage Style Desc -->
 	    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />

@@ -34,7 +34,7 @@ public class ExcelServiceController {
 	/**
 	 * 生成要导出的Excel文件
 	 * 
-	 * @param sn
+	 * @param data
 	 * @return
 	 * @throws IOException
 	 */

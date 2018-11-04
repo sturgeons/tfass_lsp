@@ -25,7 +25,8 @@ Ext.define('MainModule.controller.TreePanelController', {
                             })
                         }
                     } else {
-                        if (record.get('expanded')) { view.collapse(record); } else { view.expand(record); }
+                        if (record.get('expanded')) {
+                            view.collapse(record); } else { view.expand(record); }
                     }
                 }
         	}

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import com.fxtech.ldplatform.os.models.SystemUser;
 
 /**
@@ -29,13 +30,13 @@ public class DispacherController {
 	 * @return
 	 */
 	@RequestMapping(value = "{path}")
-	public String disp(@ModelAttribute("model") ModelMap model, @PathVariable("path") String path,
-			HttpServletRequest request) {
+	public String disp(@ModelAttribute("model") ModelMap model, @PathVariable("path") String path, HttpServletRequest request) {
 		// 用户信息如果不存在，则说明session已经失效。应该让用户重新登录系统
 		SystemUser user = (SystemUser) request.getSession().getAttribute("freeWayUser");
 		model.addAttribute("modelName", user == null && !"stWhreport".equals(path) ? "exitSystem" : path);
 		model.put("sysid", user == null ? "" : user.getSysid());
-
+		System.out.print(path+"\n");
+		System.out.print(model+"\n");
 		return path.endsWith("Report") ? "report" : "func";
 	}
 
